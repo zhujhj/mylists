@@ -24,6 +24,9 @@ public class Item {
     @Column(nullable = false)
     private boolean completed = false;
 
+    @Column(name = "due_at")
+    private Instant dueAt;   // <-- NEW, nullable
+
     @PrePersist
     public void prePersist() {
         if (id == null) {
@@ -50,4 +53,7 @@ public class Item {
 
     public boolean isCompleted() { return completed; }
     public void setCompleted(boolean completed) { this.completed = completed; }
+
+    public Instant getDueAt() { return dueAt; }
+    public void setDueAt(Instant dueAt) { this.dueAt = dueAt; }
 }
